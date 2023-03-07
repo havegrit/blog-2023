@@ -159,27 +159,27 @@
     });
 
     function showPage(el) {
-      $(el).addClass('text-red-500');
-      $(el).parent().siblings().find(' > a').removeClass('text-red-500');
+        $(el).addClass('text-red-500');
+        $(el).parent().siblings().find(' > a').removeClass('text-red-500');
 
-      const pageNo = $(el).find(' > span:first-child').text();
-      const subject = $(el).find(' > span:nth-child(2)').text();
-      const createDate = $(el).find(' > span:nth-child(3)').text();
+        const pageNo = $(el).find(' > span:first-child').text();
+        const subject = $(el).find(' > span:nth-child(2)').text();
+        const createDate = $(el).find(' > span:nth-child(3)').text();
 
-      $('.current-page-no').html(pageNo);
-      $('.current-page-subject').html(subject);
-      $('.current-page-createDate').html(createDate);
+        $('.current-page-no').html(pageNo);
+        $('.current-page-subject').html(subject);
+        $('.current-page-createDate').html(createDate);
 
-       fetch(pageNo + ".md")
-         .then(response => response.text()) // 응답에서 본문만 취한다.
-         .then(text => {
-           viewer1.setMarkdown(text);
+        fetch(pageNo + ".md")
+            .then(response => response.text()) // 응답에서 본문만 취한다.
+            .then(text => {
+            viewer1.setMarkdown(text);
 
-           window.scrollTo({
-             top: 0,
-             behavior: "smooth"
-           });
-         })
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+            })
      }
     const params = new URL(document.location).searchParams;
     const paramId = params.get("id");
