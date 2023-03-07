@@ -67,40 +67,48 @@
         <span class="current-page-no text-lg"></span>
         <span class="current-page-subject"></span>
         <span class="current-page-createDate text-lg"></span>
-      </div>
+    </div>
     
-      <div id="viewer-1">
-      </div>
+    <div id="viewer-1">
+    </div>
     
-      <ul class="list">
+    <ul class="list">
         <li>
-          <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
+            <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
+                <span class="data-id-5">5</span>
+                <span class="mr-auto underline">DB SELECT 문 예시</span>
+                <span>2023-03-08</span>
+            </a>
+            </li>
+        <li>
+            <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
             <span>4</span>
             <span class="mr-auto underline">uml 예시</span>
             <span>2023-03-07</span>
-          </a>
+            </a>
         </li>
         <li>
-          <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
+            <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
             <span>3</span>
             <span class="mr-auto underline">HTML 기초</span>
             <span>2023-03-07</span>
-          </a>
+            </a>
         </li>
         <li>
-          <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
+            <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
             <span>2</span>
             <span class="mr-auto underline">CSS 기초</span>
             <span>2023-03-07</span>
-          </a>
+            </a>
         </li>
         <li>
-          <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
+            <a href="javascript:;" onclick="showPage(this);" class="block p-2 hover:text-red-500 flex gap-2">
             <span>1</span>
             <span class="mr-auto underline">JAVA 기초</span>
             <span>2023-03-07</span>
-          </a>
+            </a>
         </li>
+    </ul>
 
   <script>
     const Editor = toastui.Editor;
@@ -134,9 +142,7 @@
       return { toHTMLRenderers };
     }
 
-    // id가 'viewer-1-template' 인 엘리먼트를 찾는다.
-    const viewer1TemplateEl = "loading...";
-    const viewer1MarkdownSource = viewer1TemplateEl; // 포함하고 있는 내용
+    const viewer1MarkdownSource = "loading..."; // 포함하고 있는 내용
 
     const viewer1 = Editor.factory({
       el: document.querySelector("#viewer-1"),
@@ -175,7 +181,14 @@
            });
          })
      }
-     $('.list > li:first-child > a').click();
+    const params = new URL(document.location).searchParams;
+    const paramId = params.get("id");
+
+    if ($('.data-id-' + paramId).length == 1) {
+      $('.data-id-' + paramId).parent().click();
+    } else {
+      $('.list > li:first-child > a').click();
+    }
   </script>
 
 </body>
